@@ -8,7 +8,7 @@ The heavy lifting is done by the [locsim tool](https://github.com/udevsharold/lo
 - a jailbroken iOS device (tested with an iPhone SE 1st Gen and iPhone 8 Plus)
 - HomeAssistant with External Access setup (Nabu Casa is the easiest but it costs money, I prefer using the Cloudflared method as I already had a domain and is just as easy as NabuCasa)
 - a MQTT broker (This can be done within HomeAssistant. I reccomend this video https://www.youtube.com/watch?v=dqTn-Gk4Qeo)
-- 
+
 ## Setting up the iPhone
 The iOS device will need to be jailbroken and some packages will need to be installed. The Sileo store was used to install these packages. See here for help [jailbreaking](https://ios.cfw.guide/) and here for help with [Sileo](https://ios.cfw.guide/using-sileo/)
 
@@ -18,7 +18,7 @@ The iOS device will need to be jailbroken and some packages will need to be inst
 
 2. While in Settings go to WiFi->[your network] and note your IP address.
 
-3. Install `openssh` in Sileo. It might ask for you to set up a password. Windows users will need to install an SSH client like [PuTTY](https://www.putty.org/)
+3. Install `openssh` in Sileo. It might ask for you to set up a password. Modern versions of Windows come with SSH. If your version doesn't look into an SSH client such as PuTTY.
 
 4. SSH into your jailbroken iPhone. Try using the `mobile` user or the `root` user. Use the password you set up (or if you didn't the default is `alpine`).
 
@@ -31,6 +31,7 @@ First, disable iMessage and FaceTime in the settings on the jailbroken iPhone
 Next, run these commands
 ```sudo launchctl stop identityservicesd```
 ```sudo launchctl disable system/identityservicesd```
+```sudo launchctl unload identityservicesd```
 ```sudo launchctl stop system/com.apple.MobileSMS```
 ```sudo launchctl disable system/com.apple.MobileSMS```
 Lastly, follow the setup found here https://openbubbles.app/docs/pnr.html#relay-apps
