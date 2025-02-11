@@ -6,11 +6,11 @@ import json
 import subprocess
 
 MQTT_HOST = ""
-MQTT_PORT = 443
+MQTT_PORT = 1884
 MQTT_USERNAME = ""
 MQTT_PASSWORD = "" 
 TOPIC = ""
-USE_TLS = True
+USE_TLS = False
 
 def on_message(client, userdata, message):
     location = json.loads(message.payload)
@@ -23,10 +23,9 @@ def on_message(client, userdata, message):
         altitude_accuracy = location["vac"]
         velocity = location["vel"]
         couse = location["cog"]
-        time = location["tst"]
 
         # tell locsim to update location
-        command = f"locsim start -x {latitude} -y {longitude} -h {accuracy} -a {altitude} -v {altitude_accuracy} -s {velocity} -c {couse} -t {time}"
+        command = f"locsim start -x {latitude} -y {longitude} -h {accuracy} -a {altitude} -v {altitude_accuracy} -s {velocity} -c {couse}"
         print("Setting location...")
         subprocess.run(command.split(), text=True)
 
