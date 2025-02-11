@@ -94,7 +94,7 @@ You can add conditions but I did not.
 
 In payload enter this. 
 
-`{
+```{
   "lat": {{states.device_tracker.pixel_9_pro.attributes.latitude}},
   "lon": {{states.device_tracker.pixel_9_pro.attributes.longitude}},
   "acc": {{states.device_tracker.pixel_9_pro.attributes.gps_accuracy}},
@@ -102,7 +102,7 @@ In payload enter this.
   "vac": {{states.device_tracker.pixel_9_pro.attributes.vertical_accuracy}},
   "vel": {{states.device_tracker.pixel_9_pro.attributes.speed}},
   "cog": {{states.device_tracker.pixel_9_pro.attributes.course}}
-}`
+}```
 
 ### NOTE: Replace "pixel_9_pro" with whatever your device's tracker is. 
 
